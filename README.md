@@ -11,20 +11,30 @@ To get started, just put 'import flotilla_easy' at the top of your code. Then us
 
 #Using the different output modules:
 To run the motor, use 'motor(speed)' where speed is an integer between -63 and 63
+
 To turn on a pixel in the matrix, use 'matrix(x, y, state)' where x and y are integers from 0 to 7 and state is True or False
+
 To show a number on the number module, use 'number(x)' where x is an integer from 0 to 9999
+
  
  
 #Using the different input modules:
 To use the light sensor, use 'light()' - which returns the light level in lux
+
 To use the colour sensor, use 'colour()' - which returns the colour level as (red, green, blue, all)
+
 To use the slider or dial, use slider() or dial() - which return integers between 0 and 1023
+
 To use the touch sensor, use touch(x) where x is an either 1, 2, 3, or 4 depending on which sensor you want to check. Returns True or      False depending if the sensor is being touched
+
 To use the joystick, use 'joystick(what)' where what is either 'x', 'y', or 'button' depending on what you want to sense. Returns an integer from 0 to 1023 for the x and y, and a True or False for the button.
+
 To use the weather moudle, use 'weather(what)' where what is either 'temp' or 'press' for temperature or pressure. Temp is in C, pressure in hPa. 
+
 To use the motion module, use 'motion(what)' where what is either 'x' 'y' or 'z'
  
- 
+
+#Planned improvements
 This is far from finished - it was knocked up hours before I was due to teach a workshop - but it's a start, and I will improve it. 
 
 Planned improvements are:
