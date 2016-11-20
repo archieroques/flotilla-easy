@@ -16,22 +16,22 @@ To get started, just put 'import flotilla_easy' at the top of your code. Then us
  
  
 #Using the different input modules:
- -To use the light sensor, use 'light()' - which returns the light level in lux
- -To use the colour sensor, use 'colour()' - which returns the colour level as (red, green, blue, all)
- -To use the slider or dial, use slider() or dial() - which return integers between 0 and 1023
- -To use the touch sensor, use touch(x) where x is an either 1, 2, 3, or 4 depending on which sensor you want to check. Returns True or False depending if the sensor is being touched
- -To use the joystick, use 'joystick(what)' where what is either 'x', 'y', or 'button' depending on what you want to sense. Returns an integer from 0 to 1023 for the x and y, and a True or False for the button.
- -To use the weather moudle, use 'weather(what)' where what is either 'temp' or 'press' for temperature or pressure. Temp is in C, pressure in hPa. 
- -To use the motion module, use 'motion(what)' where what is either 'x' 'y' or 'z'
+-To use the light sensor, use 'light()' - which returns the light level in lux
+-To use the colour sensor, use 'colour()' - which returns the colour level as (red, green, blue, all)
+-To use the slider or dial, use slider() or dial() - which return integers between 0 and 1023
+-To use the touch sensor, use touch(x) where x is an either 1, 2, 3, or 4 depending on which sensor you want to check. Returns True or      False depending if the sensor is being touched
+-To use the joystick, use 'joystick(what)' where what is either 'x', 'y', or 'button' depending on what you want to sense. Returns an integer from 0 to 1023 for the x and y, and a True or False for the button.
+-To use the weather moudle, use 'weather(what)' where what is either 'temp' or 'press' for temperature or pressure. Temp is in C, pressure in hPa. 
+-To use the motion module, use 'motion(what)' where what is either 'x' 'y' or 'z'
  
  
 This is far from finished - it was knocked up hours before I was due to teach a workshop - but it's a start, and I will improve it. 
 
 Planned improvements are:
- -Adding support for the rainbow module (we only just got one)
- -Adding a clear_matrix() function
- -Adding commands to set the decimal points and the colon on the number module
- -Adding support for multiple modules (especially motor and light)
+-Adding support for the rainbow module (we only just got one)
+-Adding a clear_matrix() function
+-Adding commands to set the decimal points and the colon on the number module
+-Adding support for multiple modules (especially motor and light)
 
 
 It needs the prettytable module, which is a bit of a pain to install on everyone's laptops if you are running a workshop. This code isn't properly wrapped into a library with all the bits, so to quickly solve this I just stuck everything in a folder and got the kids to put their code in there. It all worked fine!
