@@ -45,3 +45,8 @@ Adding support for multiple modules (especially motor and light)
 
 
 It needs the prettytable module, which is a bit of a pain to install on everyone's laptops if you are running a workshop. This code isn't properly wrapped into a library with all the bits, so to quickly solve this I just stuck everything in a folder and got the kids to put their code in there. It all worked fine!
+
+
+
+
+This library is based on Pimoroni's code and product. Thanks guys! <3
