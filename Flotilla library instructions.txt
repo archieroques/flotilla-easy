@@ -1,0 +1,24 @@
+import flotilla_easy
+
+'''
+Remember - all modules must have a () at the end or they won't work!
+'''
+
+OUTPUTS:
+flotilla_easy.motor(which motor (1, 2, 3, 4), speed from -63 to 63)
+flotilla_easy.matrix(left to right, up to down, True/False for on/off)
+flotilla_easy.number(number from 0000 to 9999)
+flotilla_easy.rainbow(which_pixel, red, green, blue) where red, green, and blue are numbers from 0 to 255. 
+
+INPUTS:
+flotilla_easy.joystick(do you want the "x"0, the "y", or the "button"?)
+flotilla_easy.motion(do you want the "x"0, the "y", or the "z"?)
+flotilla_easy.light(which sensor do you want? choose 1 or 2) - this will just give you a number - about 500 = a fairly bright light from a torch, 
+											     over 1000 is a camera flash directly above the sensor
+flotilla_easy.touch(what number do you want to sense?) returns True if touched of False if not
+flotilla_easy.weather("temp" for temperature, "press" for pressure) - room temp = 25C, pressure = 101325
+flotilla_easy.slider() - will give you a number from 0 to 1023
+flotilla_easy.dial() - will give a number from 0 to 1023
+
+OTHER STUFF:
+clear_matrix() will wipe the matrix blank. 
