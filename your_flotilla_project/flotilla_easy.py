@@ -36,25 +36,71 @@ if flot_lib == True:
     except AttributeError:
         print("Couldn't find a dock. Continuing in test mode")
 
+col = 0
+mat = 0
+mot = 0
+mot2 = 0
+mot3 = 0
+mot4 = 0
+num = 0
+tou = 0
+dia = 0
+joy = 0
+sli = 0
+wea = 0
+acc = 0
+lig = 0
+lig2= 0
+rai = 0
+
+
 
 #we should scale all values to 1000 I think
 
 if cli_connected and flot_lib:
-    col = client.first(flotilla.Colour) #y - the values scale 0 to 25
-    mat = client.first(flotilla.Matrix)#y
-    mot = client.first(flotilla.Motor)#y - values are 0 to 63/-63 (f/r)
-    num = client.first(flotilla.Number)#n
-    tou = client.first(flotilla.Touch)#y
-    dia = client.first(flotilla.Dial)#y - the values scale 0-1023
-    joy = client.first(flotilla.Joystick)#y - the values scale from 0 (right/btm) to 1023 (top/left) - scale -1k to 1k or will this cause errors?
-    sli = client.first(flotilla.Slider)#y -s scales 0  to 1023
-    wea = client.first(flotilla.Weather)#y
-    acc = client.first(flotilla.Motion)#y
-    lig = client.first(flotilla.Light)#y
+    for module in client.available.values():
+        if module.is_a(flotilla.Colour):
+            col = module
+        if module.is_a(flotilla.Matrix):
+            mat = module
+        if module.is_a(flotilla.Motor):
+            if mot == 0:
+                mot = module
+            elif mot2 == 0:
+                mot2 = module
+            elif mot3 == 0:
+                mot3 = module
+            else:
+                mot4 = module
+        if module.is_a(flotilla.Number):
+            num = module
+        if module.is_a(flotilla.Touch):
+            tou = module
+        if module.is_a(flotilla.Dial):
+            dia = module
+        if module.is_a(flotilla.Joystick):
+            joy = module
+        if module.is_a(flotilla.Slider):
+            sli = module
+        if module.is_a(flotilla.Weather):
+            wea = module
+        if module.is_a(flotilla.Motion):
+            acc = module
+        if module.is_a(flotilla.Rainbow):
+            rai = module
+        if module.is_a(flotilla.Light):
+            if lig == 0:
+                lig = module
+            else:
+                lig2 = module
+            
 else:
     col = 0
     mat = 0
     mot = 0
+    mot2 = 0
+    mot3 = 0
+    mot4 = 0
     num = 0
     tou = 0
     dia = 0
@@ -63,8 +109,10 @@ else:
     wea = 0
     acc = 0
     lig = 0
-    testmatrix = [[0 for x in range(8)] for y in range (8)]
-
+    lig2 = 0
+    rai = 0
+    
+testmatrix = [[0 for x in range(8)] for y in range (8)]
 def colour():
     try:
         if col != 0:
@@ -83,6 +131,28 @@ def colour():
             return(100, 200, 300, 0)
         else:
             print("No module connected. Try again!")
+def clear_matrix():
+    try:
+        for x in range (0, 8, 1):
+            for y in range(0, 8, 1):
+                mat.set_pixel(x, y, 1).update()
+        for x in range (0, 8, 1):
+            for y in range(0, 8, 1):
+                mat.set_pixel(x, y, 0).update()
+    except AttributeError:
+        if mat == 0:
+            print("Test mode: lighting pixels")
+            for x in range (0, 8, 1):
+                for y in range(0, 8, 1):
+                    testmatrix[x][y] = 0
+            matrix_printing = prettytable.PrettyTable()
+            for row in testmatrix:
+                matrix_printing.add_row(row)
+
+            print(matrix_printing.get_string(header=False, border=False))
+        else:
+            print("No module connected. Try again!")
+
 
 def matrix(x,y,state):
     if state == True:
@@ -104,9 +174,18 @@ def matrix(x,y,state):
             print("No module connected. Try again!")
 
 
-def motor(speed):
+def motor(which_motor, speed):
     try:
-        mot.set_speed(speed)
+        if which_motor == 1 or which_motor == "1":
+            mot.set_speed(speed)
+        elif which_motor == 2 or which_motor == "2":
+            mot2.set_speed(speed)
+        elif which_motor == 3 or which_motor == "3":
+            mot3.set_speed(speed)
+        elif which_motor == 4 or which_motor == "4":
+            mot4.set_speed(speed)
+        else:
+            print("Sorry! which_motor must be either one, two, three or four")
     except AttributeError:
         if mot == 0:
             print("Test mode: simulating speed: ", speed)
@@ -259,10 +338,13 @@ def weather(value):
         else:
             print("No module connected. Try again!")
 
-def light():
+def light(which_sensor):
     if lig != 0:    
         try:
-            return lig.lux   
+            if which_sensor == 1 or which_sensor == "1":
+                return lig.lux
+            else:
+                return lig2.lux   
         except AttributeError:
             if lig == 0:
                 print("Test mode - simulating light level")
@@ -306,6 +388,20 @@ def motion(value):
         else:
             print("No module connected. Try again!")
 
+  
+    
+def rainbow(pixel, red, green, blue):
+    try:
+        if pixel == "all":
+            rai.set_all(red, green, blue)
+        else:
+            rai.set_pixel(pixel, red, green, blue)
+        rai.update()
+    except AttributeError:
+        if mot == 0:
+            print("Test mode: simulating colour:\n red: ", red, "green: ", green, "blue: ", blue)
+        else:
+            print("No module connected. Try again!")
 ##'''
 ##if color is None:
 ##    client.stop()
