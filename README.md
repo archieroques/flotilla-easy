@@ -10,9 +10,12 @@ One feature it does have is a slightly crude simulation of the modules, if you d
 # How to install
 
 To install:
-* Hit 'clone or download' on the main page
-* Extract the zip file
-* When coding, save your main project python file in the 'your_flotilla_project' folder and run it there. 
+* Hit 'clone or download' on the main page, then 'Download ZIP'
+* Extract the zip file (on a Raspberry Pi this is done through the command line:
+   `cd Downloads` - this navigates to the Downloads folder
+   `unzip flotilla-easy-master` - this unzips the folder you just got
+   `sudo mv flotilla-easy-master/your_flotilla_project /Desktop` - this moves the project folder to Desktop (could also be moved anywhere else
+* When coding, save your main project python file in the 'your_flotilla_project' folder, and run it there. 
 
 # How to use
 
